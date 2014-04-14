@@ -1,3 +1,9 @@
 body {
     background-color: white;
 }
+
+div {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 3%;
+}
