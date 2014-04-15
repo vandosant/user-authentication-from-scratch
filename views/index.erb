@@ -1,6 +1,13 @@
-<p>
+<% if logged_in %>
+  <h1>Welcome, <%= user_data[:email] %>.</h1>
+<% else %>
   <h1>You are not logged in.</h1>
-</p>
+<% end %>
+
 <p>
-  <a href="/register">Register</a>
+  <% if logged_in %>
+    <a href="/logout">Logout</a>
+  <% else %>
+    <a href="/register">Register</a>
+  <% end %>
 </p>

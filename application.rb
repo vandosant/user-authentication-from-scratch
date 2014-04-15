@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'bcrypt'
 
 class Application < Sinatra::Application
 
@@ -11,8 +12,22 @@ class Application < Sinatra::Application
 
   end
 
+  enable :sessions
+
+  def logged_in?
+    unless session[:id] == nil
+      return true
+    end
+  end
+
+
   get '/' do
-    erb :index
+    if logged_in?
+      user_data = DB[:users].where(:id => session[:id]).to_a.first
+      erb :index, locals: {:user_data => user_data, :logged_in => true}
+    else
+      erb :index, locals: {:logged_in => false}
+    end
   end
 
   get '/register' do
@@ -20,6 +35,14 @@ class Application < Sinatra::Application
   end
 
   post '/' do
-    "Hello " + params[:email_address]
+    new_password = BCrypt::Password.create(params[:password])
+    session[:id] = DB[:users].insert(:email => params[:email_address], :password => new_password)
+    redirect '/'
   end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
+
 end
