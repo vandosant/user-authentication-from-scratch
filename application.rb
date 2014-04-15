@@ -5,11 +5,6 @@ class Application < Sinatra::Application
 
   def initialize(app=nil)
     super(app)
-
-    # initialize any other instance variables for you
-    # application below this comment. One example would be repositories
-    # to store things in a database.
-
   end
 
   enable :sessions
@@ -51,14 +46,17 @@ class Application < Sinatra::Application
 
   post '/login' do
     this_email_data = DB[:users].where(:email => params[:email_address]).to_a.first
-    password_matching_email = BCrypt::Password.new(this_email_data[:password])
 
-    if password_matching_email == params[:password]
-      session[:id] = this_email_data[:id]
-      redirect '/'
-    else
+    if this_email_data == nil
       erb :login, locals: {:error => true}
+    else
+      password_matching_email = BCrypt::Password.new(this_email_data[:password])
+      if password_matching_email == params[:password]
+        session[:id] = this_email_data[:id]
+        redirect '/'
+      else
+        erb :login, locals: {:error => true}
+      end
     end
   end
-
 end
