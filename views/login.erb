@@ -1,0 +1,17 @@
+<h1 id="reg">Login</h1>
+<% if error == true %>
+  <p class="error">Email / password is invalid</p>
+<% end %>
+<div id="form">
+  <form action="/login" method="post">
+    <div id="email">
+      <label>Email</label><input class="form-field" type="text" name="email_address">
+    </div>
+    <div id="password">
+      <label>Password</label><input class="form-field" type="password" name="password">
+    </div>
+    <div id="register">
+      <button type="submit">Login</button>
+    </div>
+  </form>
+</div>

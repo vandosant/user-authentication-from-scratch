@@ -45,4 +45,20 @@ class Application < Sinatra::Application
     redirect '/'
   end
 
+  get '/login' do
+    erb :login, locals: {:error => false}
+  end
+
+  post '/login' do
+    this_email_data = DB[:users].where(:email => params[:email_address]).to_a.first
+    password_matching_email = BCrypt::Password.new(this_email_data[:password])
+
+    if password_matching_email == params[:password]
+      session[:id] = this_email_data[:id]
+      redirect '/'
+    else
+      erb :login, locals: {:error => true}
+    end
+  end
+
 end

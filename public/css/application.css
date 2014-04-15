@@ -36,3 +36,8 @@ label {
 #reg {
     padding-left: 80px;
 }
+
+.error {
+    color: red;
+    padding-left: 80px;
+}
