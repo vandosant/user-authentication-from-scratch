@@ -2,8 +2,37 @@ body {
     background-color: white;
 }
 
-div {
+#layout {
     padding-left: 5%;
     padding-right: 5%;
     margin-top: 3%;
+}
+
+#email {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 2%;
+}
+
+#password {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 2%;
+}
+
+.form-field {
+    object-align: right;
+}
+
+label {
+    display: inline-block;
+    width: 80px;
+}
+
+#register {
+    padding-left: 80px;
+}
+
+#reg {
+    padding-left: 80px;
 }
