@@ -29,6 +29,6 @@ To run the migrations on heroku, run `heroku run 'rake db:migrate'`. If you
 do not have a Heroku configuration variable named DATABASE_URL, then you will need to create one.
 
 ## Urls
-1. Staging: `http://stormy-refuge-7694.herokuapp.com/`
-1. Production: `http://user-prod.herokuapp.com/`
-1. Pivotal Tracker: `https://www.pivotaltracker.com/n/projects/1060114`
+1. [Staging](http://stormy-refuge-7694.herokuapp.com/)
+1. [Production](http://user-prod.herokuapp.com/)
+1. [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/1060114)
