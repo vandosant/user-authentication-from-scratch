@@ -21,15 +21,14 @@ class Application < Sinatra::Application
   end
 
   get '/' do
-
-    if logged_in? && admin?
+    if !logged_in?
+      erb :index, locals: {:logged_in => false, :admin => false}
+    elsif logged_in? && admin?
       user_data = DB[:users].where(:id => session[:id]).to_a.first
       erb :index, locals: {:user_data => user_data, :logged_in => true, :admin => true}
     elsif logged_in?
       user_data = DB[:users].where(:id => session[:id]).to_a.first
       erb :index, locals: {:user_data => user_data, :logged_in => true, :admin => false}
-    else
-      erb :index, locals: {:logged_in => false, :admin => false}
     end
   end
 
