@@ -41,3 +41,35 @@ label {
     color: red;
     padding-left: 80px;
 }
+
+#left_column_style {
+    border-right: 2px solid black;
+    padding: 5px;
+}
+
+#right_column_style {
+    padding: 5px;
+}
+
+#table_style {
+    border: 2px solid black;
+}
+
+tr:nth-child(1) {
+    background-color: darkgray;
+}
+
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+#user_logout {
+    display: inline-block;
+    width: 90%;
+    text-align: right;
+}
+
+#user_home {
+    display: inline-block;
+}

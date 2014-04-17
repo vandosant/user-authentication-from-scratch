@@ -15,13 +15,21 @@ class Application < Sinatra::Application
     end
   end
 
+  def admin?
+    user_data = DB[:users].where(:id => session[:id]).to_a.first
+    user_data[:admin]
+  end
 
   get '/' do
-    if logged_in?
+
+    if logged_in? && admin?
       user_data = DB[:users].where(:id => session[:id]).to_a.first
-      erb :index, locals: {:user_data => user_data, :logged_in => true}
+      erb :index, locals: {:user_data => user_data, :logged_in => true, :admin => true}
+    elsif logged_in?
+      user_data = DB[:users].where(:id => session[:id]).to_a.first
+      erb :index, locals: {:user_data => user_data, :logged_in => true, :admin => false}
     else
-      erb :index, locals: {:logged_in => false}
+      erb :index, locals: {:logged_in => false, :admin => false}
     end
   end
 
@@ -58,5 +66,11 @@ class Application < Sinatra::Application
         erb :login, locals: {:error => true}
       end
     end
+  end
+
+  get '/users' do
+    user_data = DB[:users].where(:id => session[:id]).to_a.first
+    redirect '/' unless user_data[:admin]
+    erb :users, locals: {:users => DB[:users].to_a, :user_data => user_data}
   end
 end

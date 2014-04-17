@@ -1,0 +1,17 @@
+<div id="user_home"><a href='/'>Home</a></div>
+
+<div id="user_logout">welcome, <%= user_data[:email] %> | <a href="/logout">logout</a></div>
+
+<h1>Users</h1>
+<table id="table_style">
+  <tr>
+    <td id="left_column_style">ID</td>
+    <td id="right_column_style">Email</td>
+  </tr>
+  <% users.each do |row| %>
+    <tr>
+      <td id="left_column_style"><%= row[:id] %></td>
+      <td id="right_column_style"><%= row[:email] %></td>
+    </tr>
+  <% end %>
+</table>

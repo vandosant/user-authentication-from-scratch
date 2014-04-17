@@ -7,7 +7,12 @@
 <p>
   <% if logged_in %>
     <a href="/logout">Logout</a>
+      <% if admin %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="/users">View all users</a>
+      <% end %>
   <% else %>
     <a href="/login">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/register">Register</a>
   <% end %>
 </p>
+

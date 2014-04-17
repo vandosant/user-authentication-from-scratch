@@ -4,6 +4,14 @@ require 'capybara/rspec'
 Capybara.app = Application
 
 feature 'Homepage' do
+  before do
+    DB[:users].insert(:email => "admin@example.com", :password => BCrypt::Password.create("password"), :admin => true)
+  end
+
+  after do
+    DB[:users].where(:email => "admin@example.com").delete
+  end
+
   scenario 'User can register and logout' do
     visit '/'
 
@@ -89,6 +97,24 @@ feature 'Homepage' do
     actual = DB[:users].where(:email => "chuck@example.com").to_a.first[:admin]
 
     expect(actual).to eq false
+  end
+
+  scenario 'Administrators can view all other users' do
+    visit '/'
+    expect(page).to have_no_content ("View all users")
+    click_link "Login"
+    fill_in "email_address", with: "admin@example.com"
+    fill_in "password", with: "password"
+    click_on "Login"
+
+    click_link "View all users"
+
+    expect(page).to have_content("ID")
+    expect(page).to have_content("Users")
+    expect(page).to have_content("welcome, admin@example.com")
+    expect(page).to have_link("logout")
+    expect(page).to have_link("Home")
+
   end
 
 end
