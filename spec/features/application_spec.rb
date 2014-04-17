@@ -78,4 +78,17 @@ feature 'Homepage' do
 
   end
 
+  scenario 'New users are not administrators by default' do
+    visit '/'
+
+    click_link "Register"
+    fill_in "email_address", with: "chuck@example.com"
+    fill_in "password", with: "password"
+    click_on "Register"
+
+    actual = DB[:users].where(:email => "chuck@example.com").to_a.first[:admin]
+
+    expect(actual).to eq false
+  end
+
 end
