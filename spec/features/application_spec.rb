@@ -117,4 +117,12 @@ feature 'Homepage' do
 
   end
 
+  scenario 'Users can visit the about page' do
+    visit '/'
+
+    click_link "About"
+
+    expect(page).to have_content("About")
+  end
+
 end

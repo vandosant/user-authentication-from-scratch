@@ -64,6 +64,10 @@ form input {
     border: 1px solid #748277;
 }
 
+#about_content {
+    width: 480px;
+}
+
 #left_column_style {
     border-right: 2px solid black;
     padding: 5px;
@@ -86,6 +90,8 @@ tr:nth-child(even) {
     background-color: #eeeeee;
 }
 
+/*link styling*/
+
 #user_logout {
     display: inline-block;
     width: 90%;
@@ -94,4 +100,9 @@ tr:nth-child(even) {
 
 #user_home {
     display: inline-block;
+}
+
+.about_us {
+    display: inline-block;
+    float: right;
 }

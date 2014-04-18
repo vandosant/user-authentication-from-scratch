@@ -72,4 +72,8 @@ class Application < Sinatra::Application
     redirect '/' unless user_data[:admin]
     erb :users, locals: {:users => DB[:users].to_a, :user_data => user_data}
   end
+
+  get '/about' do
+    erb :about
+  end
 end
