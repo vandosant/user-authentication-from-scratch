@@ -1,10 +1,15 @@
+<header>
+  <div id="header_container">
 <% if logged_in %>
   <h1>Welcome, <%= user_data[:email] %>.</h1>
 <% else %>
   <h1>You are not logged in.</h1>
 <% end %>
+  </div><!-- end header_container-->
+</header>
 
-<p>
+<footer>
+  <div id="footer_container">
   <% if logged_in %>
     <a href="/logout">Logout</a>
       <% if admin %>
@@ -14,5 +19,6 @@
   <% else %>
     <a href="/login">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/register">Register</a>
   <% end %>
-</p>
+  </div><!--end footer_container-->
+</footer>
 

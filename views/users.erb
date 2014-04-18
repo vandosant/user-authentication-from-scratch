@@ -1,8 +1,15 @@
+<nav>
+  <div id="nav_container">
 <div id="user_home"><a href='/'>Home</a></div>
-
 <div id="user_logout">welcome, <%= user_data[:email] %> | <a href="/logout">logout</a></div>
+  </div><!--end nav_container-->
 
+<header>
+  <div id="header_container">
 <h1>Users</h1>
+  </div><!-- end header_container-->
+</header>
+<div id="content_container">
 <table id="table_style">
   <tr>
     <td id="left_column_style">ID</td>
@@ -15,3 +22,4 @@
     </tr>
   <% end %>
 </table>
+</div><!--end content_container-->

@@ -1,17 +1,24 @@
-<h1 id="reg">Login</h1>
+<header>
+  <div id="header_container">
+    <h1>Login</h1>
+  </div><!--end header_container-->
+</header>
+
+<div id="content_container">
 <% if error == true %>
-  <p class="error">Email / password is invalid</p>
+  <p class="form_error">Email / password is invalid</p>
 <% end %>
-<div id="form">
+<div id="form_container">
   <form action="/login" method="post">
-    <div id="email">
-      <label>Email</label><input class="form-field" type="text" name="email_address">
+    <div class="form_field">
+      <label>Email</label><input type="text" name="email_address">
     </div>
-    <div id="password">
-      <label>Password</label><input class="form-field" type="password" name="password">
+    <div class="form_field">
+      <label>Password</label><input type="password" name="password">
     </div>
-    <div id="register">
+    <div>
       <button type="submit">Login</button>
     </div>
   </form>
-</div>
+</div><!--end form_container-->
+</div><!--end content_container-->
