@@ -19,11 +19,15 @@ header {
 #header_container,
 #nav_container,
 #content_container,
-#footer_container {
+#footer_container,
+#logo_container {
     margin: auto;
     width: 980px;
 }
 
+#logo_container {
+    padding-top: 1em;
+}
 
 /*begin form style*/
 
