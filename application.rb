@@ -76,4 +76,10 @@ class Application < Sinatra::Application
   get '/about' do
     erb :about
   end
+
+  get '/stats' do
+    user_data = DB[:users].where(:id => session[:id]).to_a.first
+    redirect '/' unless user_data[:admin]
+    erb :stats, locals: {:user_data => user_data}
+  end
 end

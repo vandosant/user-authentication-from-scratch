@@ -125,4 +125,20 @@ feature 'Homepage' do
     expect(page).to have_content("About")
   end
 
+  scenario 'Administrators can view the statistics page' do
+    visit '/'
+    expect(page).to have_no_content ("View all users")
+    click_link "Login"
+    fill_in "email_address", with: "admin@example.com"
+    fill_in "password", with: "password"
+    click_on "Login"
+
+    click_link "View statistics"
+
+    expect(page).to have_content("Stats")
+    expect(page).to have_content("Beer Histogram")
+    expect(page).to have_content("welcome, admin@example.com")
+    expect(page).to have_link("logout")
+    expect(page).to have_link("Home")
+  end
 end
